@@ -1,11 +1,14 @@
 import { Component } from "react";
+import dataService from "./dataService";
+
 
 class ListItem extends Component {
-    render() {
-        const visibleData = this.props.listItems.data.default
-        
-        
-        const items = visibleData.map((item, index) => {
+  
+    
+
+  render() {
+       
+        const items = this.props.listItems.map((item, index) => {
       
             return (
               <li key={`${item}_${index}`}>

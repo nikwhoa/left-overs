@@ -1,18 +1,35 @@
 import { Component } from 'react';
 import './App.css';
-import * as data from './data/left-overs-json.json'
+import dataService from './dataService'
 import ListItem from './ListItem';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: data,
+      data: [],
       term: '',
       filter: 0,
-      counter: 0
+      counter: 0,
+      offset: 4
     }
   }
+
+  dataService = new dataService()
+  
+  
+  componentDidMount() {
+    this.getData()
+  }
+
+  getData = (offset) => {
+    const items = this.dataService.getData()
+    this.setState(({data}) => ({
+      data: items
+    }))
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -27,8 +44,9 @@ class App extends Component {
             <div className="list-item">Количество остаток (шт.)</div>
             <div className="list-item">Стоимость(шт.)</div>
           </li>
-          <ListItem listItems={this.state} />
+          <ListItem listItems={this.state.data} />
         </ul>
+        <button>load more</button> 
       </div>
     );
   }
