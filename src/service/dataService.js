@@ -18,6 +18,14 @@ class dataService {
         
         return res.filter((value, index) => res.indexOf(value) === index)
     }
+    getHeight = () => {
+        let res = data.default
+        .map(el => el.F)
+        .map(i => +i)
+        .sort((a, b) => a - b)
+
+        return res.filter((value, index) => res.indexOf(value) === index)
+    }
 
 }
 

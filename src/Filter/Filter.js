@@ -14,13 +14,13 @@ const Filter = () => {
     
     const valuesLength = dataServices.getLength()
     const valuesWidth = dataServices.getWidth()
-
+    const valuesHeight = dataServices.getHeight()
     return (
         <Container>
             <Row className='justify-content-center'>
                 <Length class={'text-center'} valuesLength={valuesLength} />
                 <Width valuesWidth={valuesWidth} />
-                <Height />
+                <Height valuesHeight={valuesHeight} />
             </Row>
             <Row className='justify-content-center'>
                 <Material class={'justify-content-center'} />
