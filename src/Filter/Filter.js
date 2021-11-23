@@ -13,6 +13,7 @@ class Filter extends Component {
         length: [],
         width: [],
         height: [],
+        widthOnChange: 0,
     }
 
     dataServices = new dataService()
@@ -23,14 +24,24 @@ class Filter extends Component {
         this.setState({height: this.dataServices.getHeight()})
     }
     
+    searchWidth = (items, value) => {
+        if (value === 0) {
+            return items
+        }
+    }
+
+    updateWidth = (value) => {
+        this.setState({widthOnChange: +value})
+    }
 
     render() {
-        const {length, width, height} = this.state
+        const {length, width, height, widthOnChange} = this.state
+        const visibleWidthValues = this.searchWidth(width, widthOnChange)
         return (
             <Container>
                 <Row className='justify-content-center'>
                     <Length class={'text-center'} valuesLength={length} />
-                    <Width valuesWidth={width} />
+                    <Width updateWidth={this.updateWidth} valuesWidth={visibleWidthValues} />
                     <Height valuesHeight={height} />
                 </Row>
                 <Row className='justify-content-center'>
