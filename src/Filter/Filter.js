@@ -24,25 +24,26 @@ class Filter extends Component {
         this.setState({ height: this.dataServices.getHeight() })
     }
 
-    searchWidth = (items, value) => {
+    searchForValue = (items, value) => {
         if (value.length === 0) {
             return items
         }
         return items.filter(item => item.toString().includes(value))
     }
 
-    updateWidth = (value) => {
+    updateSearchValue = (value, searchCase) => {
         this.setState({ widthOnChange: value })
     }
 
     render() {
         const { length, width, height, widthOnChange } = this.state
-        const visibleWidthValues = this.searchWidth(width, widthOnChange)
+        const visibleWidthValues = this.searchForValue(width, widthOnChange)
+        const visibleLengthValues = this.searchForValue(length, widthOnChange)
         return (
             <Container>
                 <Row className='justify-content-center'>
-                    <Length class={'text-center'} valuesLength={length} />
-                    <Width updateWidth={this.updateWidth} valuesWidth={visibleWidthValues} />
+                    <Length updateLength={this.updateSearchValue} class={'text-center'} valuesLength={visibleLengthValues} />
+                    <Width updateWidth={this.updateSearchValue} valuesWidth={visibleWidthValues} />
                     <Height valuesHeight={height} />
                 </Row>
                 <Row className='justify-content-center'>

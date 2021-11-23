@@ -23,7 +23,7 @@ class Width extends Component {
                         {loading}
                         {content}
                     </DropdownButton>
-                    <FormControl onChange={(e) => this.props.updateWidth(e.currentTarget.value)} aria-label="Text input with dropdown button" />
+                    <FormControl onChange={(e) => this.props.updateWidth(e.currentTarget.value, 'width')} aria-label="Text input with dropdown button" />
                 </InputGroup>
             </Col>
         )
