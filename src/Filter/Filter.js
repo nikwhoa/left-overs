@@ -28,6 +28,17 @@ class Filter extends Component {
         if (value === 0) {
             return items
         }
+        
+        // return items.filter(item => item === value)
+        console.log(items[0].toString()[0]);
+        return items.filter(item => {
+            let a = []
+            if (item.toString[0] === value.toString()[0]) {
+                a.push(item)
+                console.log(a);
+            } else {console.log('else')}
+            return a
+        })
     }
 
     updateWidth = (value) => {
