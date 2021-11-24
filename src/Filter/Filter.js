@@ -11,11 +11,11 @@ import { Component } from "react"
 class Filter extends Component {
     state = {
         length: [],
-        lengthToDisplay: [],
         width: [],
-        widthToDisplay: [],
         height: [],
         widthOnChange: '',
+        lengthOnChange: '',
+        searchCase: ''
     }
 
     dataServices = new dataService()
@@ -26,38 +26,41 @@ class Filter extends Component {
         this.setState({ height: this.dataServices.getHeight() })
     }
 
-    searchForValue = (items, value, searchCase) => {
+    searchForLength = (items, value) => {
         if (value.length <= 0) {
             return items
         } else {
-            switch (searchCase) {
-                case 'length':
-                        return items.filter(item => item.toString().includes(value))
-                case 'width':
-                    return items.filter(item => item.toString().includes(value))
-                default:
-                    break
-            }
+            return items.filter(item => item.toString().includes(value))
         }
-
-        /* TO-DO: ПОИСК НОРМАЛЬНО НЕ РАБОТАЕТ, ИЩЕШЬ ДЛИНУ, А СРАБАТЫВАЕТ И ДЛЯ ШИРИНЫ */
-
-        // items.filter(item => item.toString().includes(value))
-
+    }
+    
+    searchForWidth = (items, value) => {
+        if (value.length <= 0) {
+            return items
+        } else {
+            return items.filter(item => item.toString().includes(value))
+        }
     }
 
     updateSearchValue = (value, searchCase) => {
-        this.setState({ widthOnChange: value })
+        switch (searchCase) {
+            case 'length':
+                this.setState({ lengthOnChange: value, searchCase })        
+                break
+            case 'width':
+                this.setState({ widthOnChange: value, searchCase })
+                break
+            default:
+                break
+        }
     }
 
     render() {
-        const { length, lengthToDisplay, width, widthToDisplay, height, widthOnChange } = this.state
-        const visibleLengthValues = this.searchForValue(length, widthOnChange, 'length')
-        const visibleWidthValues = this.searchForValue(width, widthOnChange, 'width')
-        // const visibleLengthValues = lengthToDisplay
-        // const visibleLengthValues = this.searchForValue(length, widthOnChange, 'length')
-        // const visibleWidthValues = width
-        // const visibleHeightValues = this.searchForValue(height, widthOnChange, 'height')
+        const { length, width, height, widthOnChange, lengthOnChange} = this.state
+
+        const visibleLengthValues = this.searchForLength(length, lengthOnChange)
+        const visibleWidthValues = this.searchForWidth(width, widthOnChange)
+
         return (
             <Container>
                 <Row className='justify-content-center'>
