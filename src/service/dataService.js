@@ -26,6 +26,15 @@ class dataService {
 
         return res.filter((value, index) => res.indexOf(value) === index)
     }
+    getMaterial = () => {
+        let res = data.default
+        .map(el => el.B)
+        .filter(item => item.includes('ДСП'))
+        /* TODO: https://codesandbox.io/s/for-testing-d9dnu */
+        console.log(res);
+
+        return res.filter((value, index) => res.indexOf(value) === index)
+    }
 
 }
 

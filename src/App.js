@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import { Col, Container, Row, Table } from 'react-bootstrap';
 import './App.css';
 import About from './About/About';
 import Filter from './Filter/Filter';

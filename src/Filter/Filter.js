@@ -13,8 +13,10 @@ class Filter extends Component {
         length: [],
         width: [],
         height: [],
-        widthOnChange: '',
+        material: [],
         lengthOnChange: '',
+        widthOnChange: '',
+        heightOnChange: '',
         searchCase: ''
     }
 
@@ -24,6 +26,7 @@ class Filter extends Component {
         this.setState({ length: this.dataServices.getLength() })
         this.setState({ width: this.dataServices.getWidth() })
         this.setState({ height: this.dataServices.getHeight() })
+        this.setState({ material: this.dataServices.getMaterial() })
     }
 
     searchForLength = (items, value) => {
@@ -41,6 +44,14 @@ class Filter extends Component {
             return items.filter(item => item.toString().includes(value))
         }
     }
+    searchForHeight = (items, value) => {
+        console.log('height');
+        if (value.length <= 0) {
+            return items
+        } else {
+            return items.filter(item => item.toString().includes(value))
+        }
+    }
 
     updateSearchValue = (value, searchCase) => {
         switch (searchCase) {
@@ -50,23 +61,27 @@ class Filter extends Component {
             case 'width':
                 this.setState({ widthOnChange: value, searchCase })
                 break
+            case 'height':
+                this.setState({ heightOnChange: value, searchCase })
+                break
             default:
                 break
         }
     }
 
     render() {
-        const { length, width, height, widthOnChange, lengthOnChange} = this.state
+        const { length, width, height, widthOnChange, lengthOnChange, heightOnChange} = this.state
 
         const visibleLengthValues = this.searchForLength(length, lengthOnChange)
         const visibleWidthValues = this.searchForWidth(width, widthOnChange)
+        const visibleHeightValues = this.searchForHeight(height, heightOnChange)
 
         return (
             <Container>
                 <Row className='justify-content-center'>
                     <Length updateLength={this.updateSearchValue} class={'text-center'} valuesLength={visibleLengthValues} />
                     <Width updateWidth={this.updateSearchValue} valuesWidth={visibleWidthValues} />
-                    <Height updateHeight={this.updateSearchValue} valuesHeight={height} />
+                    <Height updateHeight={this.updateSearchValue} valuesHeight={visibleHeightValues} />
                 </Row>
                 <Row className='justify-content-center'>
                     <Material class={'justify-content-center'} />
