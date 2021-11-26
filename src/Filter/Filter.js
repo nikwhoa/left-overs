@@ -45,7 +45,6 @@ class Filter extends Component {
         }
     }
     searchForHeight = (items, value) => {
-        console.log('height');
         if (value.length <= 0) {
             return items
         } else {
