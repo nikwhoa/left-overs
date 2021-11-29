@@ -13,7 +13,7 @@ class Filter extends Component {
         length: [],
         width: [],
         height: [],
-        material: [],
+        material: null,
         lengthOnChange: '',
         widthOnChange: '',
         heightOnChange: '',
@@ -21,14 +21,20 @@ class Filter extends Component {
     }
 
     dataServices = new dataService()
-
     componentDidMount() {
         this.setState({ length: this.dataServices.getLength() })
         this.setState({ width: this.dataServices.getWidth() })
         this.setState({ height: this.dataServices.getHeight() })
-        this.setState({ material: this.dataServices.getMaterial() })
+        this.setState({ material: this.getMaterial() })
+        
     }
-
+    getMaterial = () => {
+        let res = this.dataServices.getMaterial()
+        
+        console.log(res);
+        return res
+    }
+    
     searchForLength = (items, value) => {
         if (value.length <= 0) {
             return items
@@ -55,7 +61,7 @@ class Filter extends Component {
     updateSearchValue = (value, searchCase) => {
         switch (searchCase) {
             case 'length':
-                this.setState({ lengthOnChange: value, searchCase })        
+                this.setState({ lengthOnChange: value, searchCase })
                 break
             case 'width':
                 this.setState({ widthOnChange: value, searchCase })
@@ -69,12 +75,11 @@ class Filter extends Component {
     }
 
     render() {
-        const { length, width, height, widthOnChange, lengthOnChange, heightOnChange} = this.state
-
+        const { length, width, height, widthOnChange, lengthOnChange, heightOnChange } = this.state
         const visibleLengthValues = this.searchForLength(length, lengthOnChange)
         const visibleWidthValues = this.searchForWidth(width, widthOnChange)
         const visibleHeightValues = this.searchForHeight(height, heightOnChange)
-
+        
         return (
             <Container>
                 <Row className='justify-content-center'>
