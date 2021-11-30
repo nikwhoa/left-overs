@@ -30,25 +30,39 @@ let data = [{
 
 class dataService {
     constructor(code, title, length, width, height, quantity, price) {
-        this.code = code
+        this.code = +code
         this.title = title
         this.length = length
         this.width = width
-        this.height = height
-        this.quantity = quantity
-        this.price = price
+        this.height = +height
+        this.quantity = +quantity
+        this.price = +price
     }
     createItem = () => {
         let nomenclature = {
             code: this.code,
-            title : this.title,
-            length : this.length,
-            width : this.width,
-            height : this.height,
-            quantity : this.quantity,
-            price : this.price,
+            title: this.title,
+            length: +this.length.slice(0, this.length.indexOf('х' || 'x')),
+            width: +this.width.slice(this.width.indexOf('х' || 'x') + 1),
+            height: this.height,
+            quantity: this.quantity,
+            price: this.price,
         }
-        console.log(nomenclature);
+        return nomenclature
     }
 
 }
+
+let result = []
+data.forEach(item => {
+    result.push(new dataService(
+        item.A,
+        item.B,
+        item.E,
+        item.E,
+        item.F,
+        item.H,
+        item.I).createItem()
+    )
+})
+console.log(result);
