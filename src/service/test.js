@@ -38,7 +38,7 @@ class dataService {
         this.quantity = +quantity
         this.price = +price
     }
-    createItem = () => {
+    createItem(){
         let material = () => {
             return this.title
         }
