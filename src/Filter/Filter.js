@@ -10,6 +10,7 @@ import { Component } from "react"
 
 class Filter extends Component {
     state = {
+        nomenclatures: [],
         length: [],
         width: [],
         height: [],
@@ -21,18 +22,19 @@ class Filter extends Component {
     }
 
     dataServices = new dataService()
+    
     componentDidMount() {
-        this.setState({ length: this.dataServices.getLength() })
-        this.setState({ width: this.dataServices.getWidth() })
-        this.setState({ height: this.dataServices.getHeight() })
-        this.setState({ material: this.getMaterial() })
-        
+        this.setState({nomenclatures: this.dataServices.getData()})
+        // this.setState({ length: this.dataServices.getLength() })
+        // this.setState({ width: this.dataServices.getWidth() })
+        // this.setState({ height: this.dataServices.getHeight() })        
     }
-    getMaterial = () => {
-        let res = this.dataServices.getMaterial()
-        
+
+
+    getLength = () => {
+        // у каждого элемента в массиве nomenclatures есть свойство length, нужно вытянуть с него значение
+        let res = this.state
         console.log(res);
-        return res
     }
     
     searchForLength = (items, value) => {
@@ -75,7 +77,8 @@ class Filter extends Component {
     }
 
     render() {
-        const { length, width, height, widthOnChange, lengthOnChange, heightOnChange } = this.state
+        const { width, height, widthOnChange, lengthOnChange, heightOnChange } = this.state
+        const length = this.state.nomenclatures.map(item => item.length)
         const visibleLengthValues = this.searchForLength(length, lengthOnChange)
         const visibleWidthValues = this.searchForWidth(width, widthOnChange)
         const visibleHeightValues = this.searchForHeight(height, heightOnChange)
