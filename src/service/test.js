@@ -39,9 +39,13 @@ class dataService {
         this.price = +price
     }
     createItem = () => {
+        let material = () => {
+            return this.title
+        }
         let nomenclature = {
             code: this.code,
             title: this.title,
+            material: material(),
             length: +this.length.slice(0, this.length.indexOf('х' || 'x')),
             width: +this.width.slice(this.width.indexOf('х' || 'x') + 1),
             height: this.height,
