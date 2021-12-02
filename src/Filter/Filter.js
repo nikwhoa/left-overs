@@ -29,13 +29,6 @@ class Filter extends Component {
         // this.setState({ width: this.dataServices.getWidth() })
         // this.setState({ height: this.dataServices.getHeight() })        
     }
-
-
-    getLength = () => {
-        // у каждого элемента в массиве nomenclatures есть свойство length, нужно вытянуть с него значение
-        let res = this.state
-        console.log(res);
-    }
     
     searchForLength = (items, value) => {
         if (value.length <= 0) {
@@ -77,8 +70,11 @@ class Filter extends Component {
     }
 
     render() {
-        const { width, height, widthOnChange, lengthOnChange, heightOnChange } = this.state
-        const length = this.state.nomenclatures.map(item => item.length)
+        const { widthOnChange, lengthOnChange, heightOnChange } = this.state
+        const length = this.state.nomenclatures.map(item => item.length).sort((a, b) => a - b).filter((element, index, array) => array.indexOf(element) === index)   
+        const width = this.state.nomenclatures.map(item => item.width).sort((a, b) => a - b).filter((element, index, array) => array.indexOf(element) === index)   
+        const height = this.state.nomenclatures.map(item => item.height).sort((a, b) => a - b).filter((element, index, array) => array.indexOf(element) === index)   
+        const material = this.state.nomenclatures.map(item => item.material).sort((a, b) => a - b).filter((element, index, array) => array.indexOf(element) === index)
         const visibleLengthValues = this.searchForLength(length, lengthOnChange)
         const visibleWidthValues = this.searchForWidth(width, widthOnChange)
         const visibleHeightValues = this.searchForHeight(height, heightOnChange)
@@ -91,7 +87,7 @@ class Filter extends Component {
                     <Height updateHeight={this.updateSearchValue} valuesHeight={visibleHeightValues} />
                 </Row>
                 <Row className='justify-content-center'>
-                    <Material class={'justify-content-center'} />
+                    <Material class={'justify-content-center'} materials={material} />
                     <Decor class={'justify-content-center'} />
                 </Row>
             </Container>

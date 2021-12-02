@@ -1,6 +1,7 @@
 import { Col, InputGroup, DropdownButton, Dropdown, FormControl} from "react-bootstrap"
 
 const Material = (props) => {
+    // const material = props.map(material => <Dropdown.Item href="#">Action</Dropdown.Item>)
     return (
         <Col className='col-2'>
             <InputGroup className={`mb-3 ${props.class}`}>
@@ -9,9 +10,7 @@ const Material = (props) => {
                     title="Материал"
                     id="material-filter"
                 >
-                    <Dropdown.Item href="#">Action</Dropdown.Item>
-                    <Dropdown.Item href="#">Another action</Dropdown.Item>
-                    <Dropdown.Item href="#">Something else here</Dropdown.Item>
+                    {/* {material} */}
                 </DropdownButton>
                 
             </InputGroup>
