@@ -1,6 +1,7 @@
 import { Col, InputGroup, DropdownButton, Dropdown, FormControl} from "react-bootstrap"
 
 const Material = (props) => {
+    console.log(props)
     // const material = props.map(material => <Dropdown.Item href="#">Action</Dropdown.Item>)
     return (
         <Col className='col-2'>
