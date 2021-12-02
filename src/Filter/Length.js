@@ -1,11 +1,18 @@
 
-import { Component, useState } from "react"
+import { Component, React } from "react"
 import { Col, InputGroup, DropdownButton, Dropdown, FormControl } from "react-bootstrap"
 
 class Length extends Component {
-    state = {
-        title: 'Длина'
+    
+    constructor(props) {
+        super(props);
+        
+        this.textInput = React.createRef();
+        this.state = {
+            title: 'Длина'
+        }
     }
+    
 
     // const [title, setTitle] = useState('Длина')
     // const [showList, setShow] = useState(false)
@@ -24,7 +31,7 @@ class Length extends Component {
             <Col className={`${this.props.class}`}>
                 <InputGroup className='mb-3'>
                     <DropdownButton
-                        
+                        ref={this.a}
                         variant="outline-secondary"
                         title={this.state.title}
                         id="length-filter"

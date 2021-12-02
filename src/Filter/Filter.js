@@ -69,6 +69,8 @@ class Filter extends Component {
         }
     }
 
+    
+
     render() {
         const { widthOnChange, lengthOnChange, heightOnChange } = this.state
         const length = this.state.nomenclatures.map(item => item.length).sort((a, b) => a - b).filter((element, index, array) => array.indexOf(element) === index)   
