@@ -84,7 +84,7 @@ class Filter extends Component {
         return (
             <Container className='mt-4'>
                 <Row className='justify-content-center'>
-                    <Length updateLength={this.updateSearchValue} class={'text-center'} valuesLength={visibleLengthValues} />
+                    <Length updateLength={this.updateSearchValue} valuesLength={visibleLengthValues} />
                     <Width updateWidth={this.updateSearchValue} valuesWidth={visibleWidthValues} />
                     <Height updateHeight={this.updateSearchValue} valuesHeight={visibleHeightValues} />
                 </Row>

@@ -1,5 +1,5 @@
-// import * as nomenclatures from '../data/left-overs-json-origin.json'
-import * as nomenclatures from '../data/left-overs-json.json'
+import * as nomenclatures from '../data/left-overs-json-origin.json'
+// import * as nomenclatures from '../data/left-overs-json.json'
 
 class dataService {
     
