@@ -41,7 +41,7 @@ class Length extends Component {
         const content = this.props.valuesLength !== undefined ? valuesLength : null
         
         return (
-            <Col className={`${this.props.class}`}>
+            <Col className='col-12 col-lg-3'>
                 <InputGroup onClick={e => this.onDropDownButton(e.target.nodeName)}  className='mb-3'>
                     <DropdownButton
                         show={this.state.show}

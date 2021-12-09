@@ -11,7 +11,7 @@ const Material = (props) => {
     const loading = props.materials.length < 0 ? 'loading' : null
     const content = props.materials.length > 0 ? material : null
     return (
-        <Col className='col-2'>
+        <Col className='col-12 col-lg-3'>
             <InputGroup className={`mb-3 ${props.class}`}>
                 <DropdownButton
                     variant="outline-secondary"

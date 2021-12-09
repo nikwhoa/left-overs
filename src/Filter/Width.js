@@ -43,7 +43,7 @@ class Width extends Component {
         const content = this.props.valuesWidth !== undefined ? <ValuesWidth /> : null
         
         return (
-            <Col>
+            <Col className='col-12 col-lg-3'>
                 <InputGroup onClick={e => this.onDropDownButton(e.target.nodeName)} className="mb-3">
                     <DropdownButton
                         show={this.state.show}
