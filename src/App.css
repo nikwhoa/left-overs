@@ -43,10 +43,12 @@ li {
   margin: 0;
   padding: 0;
 }
+
 li {
   display: flex;
   justify-content: center;
 }
+
 .input-item {
   height: 30px;
   width: auto;
@@ -55,4 +57,26 @@ li {
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   margin: .2rem .2rem;
+}
+
+.about p {
+  color: #909090;
+}
+
+.about hr {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.btn {
+  background: #0080e0a3;
+  color: black;
+  font-weight: 400;
+}
+
+.form-control {
+  background: gainsboro;
+  -webkit-box-shadow: 2px 2px 10px -5px rgba(34, 60, 80, 0.6) inset;
+  -moz-box-shadow: 2px 2px 10px -5px rgba(34, 60, 80, 0.6) inset;
+  box-shadow: 2px 2px 10px -5px rgba(34, 60, 80, 0.6) inset;
 }

@@ -82,7 +82,7 @@ class Filter extends Component {
         const visibleHeightValues = this.searchForHeight(height, heightOnChange)
         
         return (
-            <Container>
+            <Container className='mt-4'>
                 <Row className='justify-content-center'>
                     <Length updateLength={this.updateSearchValue} class={'text-center'} valuesLength={visibleLengthValues} />
                     <Width updateWidth={this.updateSearchValue} valuesWidth={visibleWidthValues} />
