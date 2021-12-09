@@ -19,7 +19,10 @@ class Filter extends Component {
         widthOnChange: '',
         heightOnChange: '',
         searchCase: '',
-        dataToDisplay: [],
+        dataToDisplay: {
+            length: null, 
+            width: null, 
+            height: null},
     }
 
     dataServices = new dataService()
@@ -71,10 +74,25 @@ class Filter extends Component {
     }
 
     getDataToDisplay = (value, dataCase) => {
-        console.log(value, dataCase);
-        // this.setState(data => ({
-        //     dataToDisplay: [...data.dataToDisplay, value]
-        // }))
+        
+        let dataToDisplay = {...this.state.dataToDisplay}
+        
+        switch (dataCase) {
+            case 'length':
+                dataToDisplay.length = value
+                this.setState({dataToDisplay})
+                break;
+            case 'width':
+                dataToDisplay.width = value
+                this.setState({dataToDisplay})
+                break;
+            case 'height':
+                dataToDisplay.height = value
+                this.setState({dataToDisplay})
+                break;
+            default:
+                break;
+        }
     } 
 
     render() {

@@ -15,6 +15,7 @@ class Height extends Component {
     }
     setTitle(title) {
         this.setState({ title: title })
+        this.props.getDataToDisplay(title, 'height')
     }
     inputHandler(e) {
         this.setState({value: e})
