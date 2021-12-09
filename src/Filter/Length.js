@@ -15,7 +15,8 @@ class Length extends Component {
         this.dropdownButtonRef = React.createRef();
     }
     setTitle(title) {
-        this.setState({ title: title })
+        this.setState({ title })
+        this.props.getDataToDisplay(title, 'length')
     }
     inputHandler(e) {
         this.setState({value: e})

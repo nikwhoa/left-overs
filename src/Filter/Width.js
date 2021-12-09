@@ -17,6 +17,7 @@ class Width extends Component {
     }
     setTitle(title) {
         this.setState({title: title})
+        this.props.getDataToDisplay(title, 'width')
     }
     inputHandler(e) {
         this.setState({value: e})

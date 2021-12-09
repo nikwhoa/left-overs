@@ -18,7 +18,8 @@ class Filter extends Component {
         lengthOnChange: '',
         widthOnChange: '',
         heightOnChange: '',
-        searchCase: ''
+        searchCase: '',
+        dataToDisplay: [],
     }
 
     dataServices = new dataService()
@@ -69,7 +70,12 @@ class Filter extends Component {
         }
     }
 
-    
+    getDataToDisplay = (value, dataCase) => {
+        console.log(value, dataCase);
+        // this.setState(data => ({
+        //     dataToDisplay: [...data.dataToDisplay, value]
+        // }))
+    } 
 
     render() {
         const { widthOnChange, lengthOnChange, heightOnChange } = this.state
@@ -84,9 +90,9 @@ class Filter extends Component {
         return (
             <Container className='mt-4'>
                 <Row className='justify-content-center'>
-                    <Length updateLength={this.updateSearchValue} valuesLength={visibleLengthValues} />
-                    <Width updateWidth={this.updateSearchValue} valuesWidth={visibleWidthValues} />
-                    <Height updateHeight={this.updateSearchValue} valuesHeight={visibleHeightValues} />
+                    <Length getDataToDisplay={this.getDataToDisplay} updateLength={this.updateSearchValue} valuesLength={visibleLengthValues} />
+                    <Width getDataToDisplay={this.getDataToDisplay} updateWidth={this.updateSearchValue} valuesWidth={visibleWidthValues} />
+                    <Height getDataToDisplay={this.getDataToDisplay} updateHeight={this.updateSearchValue} valuesHeight={visibleHeightValues} />
                 </Row>
                 <Row className='justify-content-center'>
                     <Material class={'justify-content-center'} materials={material} />
