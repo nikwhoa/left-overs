@@ -27,11 +27,7 @@ class Length extends Component {
     }
     onDropDownButton(e) {
         if (e.toLowerCase() === 'button') {
-            if (this.state.show === true) {
-                this.setState({show: false})    
-            } else {
-                this.setState({show: true})
-            }
+            this.setState({show: !this.state.show})
         } else {
             this.setState({show: false})
         }
