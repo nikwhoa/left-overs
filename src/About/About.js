@@ -4,7 +4,7 @@ const About = () => {
     return (
         <>
             <Container>
-                <Row>
+                <Row className='mt-5'>
                     <Col>
                         <h2>
                             Здесь можно найти остатки ДСП, МДФ или чего-то еще
