@@ -1,13 +1,15 @@
 import { useState } from "react"
-import { Col, InputGroup, DropdownButton, Dropdown, FormControl} from "react-bootstrap"
+import { Col, InputGroup, DropdownButton, Dropdown} from "react-bootstrap"
 
 const Material = (props) => {
 
-    // const [state, setState] = useState(initialState);
-    const [title, setTitle] = useState('Материал')
-
     
-    const material = props.materials.map((material, i) => <Dropdown.Item onClick={(e) => setTitle(material)} key={i} href="#">{material}</Dropdown.Item>)
+    const [title, setTitle] = useState('Материал')
+    const throwMaterial = (material) => {
+        props.getDataToDisplay(material, 'material')
+    }
+    
+    const material = props.materials.map((material, i) => <Dropdown.Item onClick={(e) => {setTitle(material); throwMaterial(material)}} key={i} href="#">{material}</Dropdown.Item>)
     const loading = props.materials.length < 0 ? 'loading' : null
     const content = props.materials.length > 0 ? material : null
     return (

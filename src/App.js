@@ -8,15 +8,19 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: null
     }
+  }
+
+  getData = (data) => {
+    this.setState({data})
   }
 
   render() {
     return (
       <div className="App">
         <About />
-        <Filter />
+        <Filter getData={this.getData} />
       </div>
     );
   }
