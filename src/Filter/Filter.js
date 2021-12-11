@@ -31,10 +31,17 @@ class Filter extends Component {
 
     componentDidMount() {
         this.setState({ nomenclatures: this.dataServices.getData() })
+        
+        
         // this.setState({ length: this.dataServices.getLength() })
         // this.setState({ width: this.dataServices.getWidth() })
         // this.setState({ height: this.dataServices.getHeight() })        
     }
+    
+    // componentWillUpdate() {
+    //     console.log('update');
+    //     this.props.getNomenclatureList(this.state.nomenclatures)
+    // }
 
     searchForLength = (items, value) => {
         if (value.length <= 0) {
@@ -111,8 +118,8 @@ class Filter extends Component {
         const visibleWidthValues = this.searchForWidth(width, widthOnChange)
         const visibleHeightValues = this.searchForHeight(height, heightOnChange)
 
-        const onValuesToDisplay = Object.values(this.state.valuesToDisplay).filter(item => item || null)
-
+        const onValuesToDisplay = Object.values(this.state.valuesToDisplay).filter(item => item || item === 0)
+        console.log(onValuesToDisplay);
 
         return (
             <Container className='mt-4'>
@@ -125,7 +132,7 @@ class Filter extends Component {
                     <Material getDataToDisplay={this.getDataToDisplay} class={'justify-content-center'} materials={material} />
                     {/* <Decor class={'justify-content-center'} /> */}
                 </Row>
-                { onValuesToDisplay.length >= 0 && <SearchButton getData={this.props.getData} state={this.state.valuesToDisplay} />}
+                { onValuesToDisplay.length >= 4 && <SearchButton getData={this.props.getData} search={this.props.getNomenclatureList} nomenclatures={this.state.nomenclatures} state={this.state.valuesToDisplay} />}
             </Container>
 
         )
@@ -141,7 +148,7 @@ const SearchButton = (props) => {
     return (
         <Row className="mt-4">
             <Col className="">
-                <Button className="search-btn" onClick={() => props.getData(props.state)} variant="primary">Найти</Button>
+                <Button className="search-btn" onClick={() => {props.getData(props.state); props.search(props.nomenclatures)}} variant="primary">Найти</Button>
             </Col>
         </Row>
     )
