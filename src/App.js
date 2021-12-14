@@ -10,18 +10,25 @@ class App extends Component {
     super(props);
     this.state = {
       data: null,
-      nomenclatures: null
+      nomenclatures: null,
+      isLoaded: false
     }
   }
-
-  getData = (data) => {
-    this.setState({data})
+  componentDidMount() {
+    // console.log('mount app');
+  }
+  getData = (data, nomenclatures) => {
+    this.setState({data, nomenclatures, isLoaded: true})
   }
   getNomenclatureList = (nomenclatures) => {
-    // let l = nomenclatures.filter(l => l.length === this.state.data.length)  
-    // let l = nomenclatures.filter(l => console.log(l.length))  
-    console.log(this.state.data.length);
+    if (this.state.isLoaded) {
       this.setState({nomenclatures})
+    } else {
+      console.log('aaaaaaaaaaaaaaaaa');
+    }
+    // let l = nomenclatures.filter(l => l.length === this.state.data.length)  
+    // let l = nomenclatures.filter(l => console.log(l.length))
+    // console.log(nomenclatures);
   }
 
 
@@ -30,7 +37,8 @@ class App extends Component {
       <div className="App">
         <About />
         <Filter getNomenclatureList={this.getNomenclatureList} getData={this.getData} />
-        <NomenclatureList data={this.state.data} />
+        {this.state.isLoaded ? <NomenclatureList data={this.state.data} nomenclatures={this.state.nomenclatures} /> : 'filter!'}
+        
       </div>
     );
   }

@@ -119,7 +119,7 @@ class Filter extends Component {
         const visibleHeightValues = this.searchForHeight(height, heightOnChange)
 
         const onValuesToDisplay = Object.values(this.state.valuesToDisplay).filter(item => item || item === 0)
-        console.log(onValuesToDisplay);
+        
 
         return (
             <Container className='mt-4'>
@@ -148,7 +148,7 @@ const SearchButton = (props) => {
     return (
         <Row className="mt-4">
             <Col className="">
-                <Button className="search-btn" onClick={() => {props.getData(props.state); props.search(props.nomenclatures)}} variant="primary">Найти</Button>
+                <Button className="search-btn" onClick={() => {props.getData(props.state, props.nomenclatures); props.search(props.nomenclatures)}} variant="primary">Найти</Button>
             </Col>
         </Row>
     )
