@@ -13,13 +13,20 @@ class NomenclatureList extends Component {
   }
 
   toShowNomenclatures = () => {
-      let visibleNomenclatures = this.props.nomenclatures.filter(item => item.length === this.props.data.length && item.height === this.props.data.height && item.width === this.props.data.width)
-      this.setState({ showNomenclatures: visibleNomenclatures })
+    let visibleNomenclatures = this.props.nomenclatures.filter(item => item.length > this.props.data.length && item.height > this.props.data.height && item.width > this.props.data.width)
+    this.setState({ showNomenclatures: visibleNomenclatures })
   }
 
   render() {
     const loading = this.state.showNomenclatures === null ? 'loading' : null
-    const content = this.state.showNomenclatures !== null ? this.state.showNomenclatures.map(item => <Row className='justify-content-center'> Номенклатура: {item.code} {item.title}, <br /> Материал: {item.material} <br /> Цена: {item.price}</Row>) : null 
+    const content = this.state.showNomenclatures !== null ? this.state.showNomenclatures.map(item => <Row className='justify-content-center mt-5'> 
+    <b>Номенклатура: </b> {item.code} {item.title}, <br /> 
+    <b>Материал:</b> {item.material} <br /> 
+    <b>Ширина:</b> {item.width} <br /> 
+    <b>Высота:</b> {item.height} <br /> 
+    <b>Длина:</b> {item.length} <br /> 
+    <b>Цена:</b> {item.price}
+    </Row>).sort((a, b) => a - b) : null
     // const nomenclatures = this.state.showNomenclatures.map(item => <Row>{item.code}</Row>)
     return (
       <Container>
