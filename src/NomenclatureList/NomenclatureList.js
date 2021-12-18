@@ -34,7 +34,7 @@ class NomenclatureList extends Component {
     return (
       <Container>
         {loading}
-        {content}
+        {content === null ? 'ыыы' : content}
       </Container>
     );
   }
