@@ -3,8 +3,11 @@ import * as nomenclatures from '../data/left-overs-json-origin.json'
 
 class dataService {
     
-    _data = nomenclatures.default
     
+    _data = nomenclatures.default.filter(item => !item.B.includes('Столешница') && !item.B.includes('Стільниця') && !item.B.includes('Стеновая панель'))
+    
+    // _data.filter(item => item.B.includes('Столешница'))
+
     constructor(code, title, length, width, height, quantity, price) {
         this.code = +code
         this.title = title
@@ -16,7 +19,7 @@ class dataService {
     }
     
     createItem = () => {
-
+        
         let material = () => {
 
             let title = this.title[0] === ' ' ? this.title.slice(1) : this.title
@@ -33,9 +36,10 @@ class dataService {
                 return 'Панель МДФ'
             } else if (title.match(/^Плита OSB+/i)) {
                 return 'Плита OSB'
-            } else if (title.match(/^Столешница+/i)) {
-                return 'Столешница'
-            }
+            } 
+            // else if (title.match(/^Столешница+/i)) {
+            //     return 'Столешница'
+            // }
         }
 
         let nomenclature = {
