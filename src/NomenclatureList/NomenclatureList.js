@@ -18,7 +18,6 @@ class NomenclatureList extends Component {
   }
 
   render() {
-    console.log(this.state.showNomenclatures);
     const loading = this.state.showNomenclatures === null ? 'loading' : null
     const content = this.state.showNomenclatures !== null ? this.state.showNomenclatures.map(item => <Row className='justify-content-center mt-5'> 
     <b>Номенклатура: </b> {item.code} {item.title}, <br /> 
@@ -28,6 +27,9 @@ class NomenclatureList extends Component {
     <b>Длина:</b> {item.length} <br /> 
     <b>Цена:</b> {item.price}
     </Row>) : null
+
+  console.log(content)
+    
     // const nomenclatures = this.state.showNomenclatures.map(item => <Row>{item.code}</Row>)
     return (
       <Container>
