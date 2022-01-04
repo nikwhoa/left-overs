@@ -45,9 +45,15 @@ li {
 }
 
 li {
+  /* text-align: right; */
+  /* list-style-type: none; */
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  /* justify-content: center; */
 }
+/* li b {
+  text-align: left;
+} */
 
 .input-item {
   height: 30px;
@@ -67,7 +73,6 @@ li {
   width: 50%;
   margin: 0 auto;
 }
-
 .btn {
   background: #0080e0a3;
   color: black;
