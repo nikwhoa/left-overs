@@ -5,22 +5,32 @@ import { Button, Col, Container, Row } from 'react-bootstrap';
 
 const NomenclatureList = (props) => {
   const [showNomenclatures, setNomenclatures] = useState(null)
+  const [sortNomenclatures, setSort] = useState('code')
 
   useEffect(() => {
-    toShowNomenclatures()
+    toShowNomenclatures(sortNomenclatures)
   }, [])
-
-  const toShowNomenclatures = () => {
+  
+  useEffect(() => {
+    toShowNomenclatures(sortNomenclatures)
+    console.log('asdfasdf');
+  }, [sortNomenclatures])
+  
+  const toShowNomenclatures = (sort) => {
+    console.log(sort);
     let visibleNomenclatures = props.nomenclatures.filter(item =>
       item.length > props.data.length
       && item.height > props.data.height
       && item.width > props.data.width
       && item.material === props.data.material)
-      .sort((a, b) => a.width - b.width)
-
+      .sort((a, b) => a.sort - b.sort)
+      console.log(visibleNomenclatures);
     setNomenclatures(visibleNomenclatures)
   }
 
+  const sorting = (sort) => {
+    setSort(sort)
+  }
 
   const loading = showNomenclatures === null ? 'loading' : null
   const content = showNomenclatures !== null ? showNomenclatures.map((item, i) =>
@@ -54,12 +64,18 @@ const NomenclatureList = (props) => {
     </div>
 
   ) : null
-  const sort = <Row>{content === true ? null : <Col className='col-12'>Сортировать по: <Button className='sort-btn' variant='light'>Ширине</Button><Button className='sort-btn' variant='light'>Длине</Button></Col>}</Row>
-  return (
+  const sortBtns = <Row>
+    <Col className='col-12'>Сортировать по:
+      <Button className='sort-btn' onClick={() => sorting('width')} variant='light'>Ширине</Button>
+      <Button className='sort-btn' onClick={() => sorting('length')} variant='light'>Длине</Button>
+    </Col>
+  </Row>
+ 
+ return (
     <Container>
       {loading}
       <Row className='mt-5'>
-      {sort}
+        {content === null ? <Col>По вашим параметрам ничего не найдено</Col> : sortBtns }
         {content === null ? 'ыыы' : content}
       </Row>
     </Container>
