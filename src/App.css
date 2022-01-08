@@ -109,3 +109,9 @@ li {
 .result-item li:last-child, .result-item li:first-child {
   border: none;
 }
+.sort-btn {
+  background: transparent !important;
+}
+.sort-btn:hover {
+  background: #0080e0a3 !important;
+}
