@@ -21,14 +21,14 @@ class NomenclatureList extends Component {
     const loading = this.state.showNomenclatures === null ? 'loading' : null
     const content = this.state.showNomenclatures !== null ? this.state.showNomenclatures.map(item =>
 
-      <div className="col-12 col-sm-6 col-md-3 p-4">
+      <div className="col-12 col-sm-6 col-md-4 p-5">
         <ul>
           <li>
             <b>Номенклатура: </b> {item.code}
           </li>
           <li>
-            Название:
-            <p>
+            <b>Название: </b>
+            <p style={{textAlign: 'right'}}>
               {item.title}
             </p>
           </li>
