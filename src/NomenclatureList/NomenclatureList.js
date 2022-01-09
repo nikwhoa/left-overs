@@ -73,13 +73,21 @@ const NomenclatureList = (props) => {
       <Button className='sort-btn' onClick={() => sorting('length')} variant='light'>Длине</Button>
     </Col>
   </Row>
-  
+  const contentToShow = content.filter((item, index) => {
+    while (index < 9) {
+      return item
+    } 
+    return false
+
+    
+  })
+  console.log(contentToShow);
   return (
     <Container>
       {loading}
       <Row className='mt-5'>
         {content === null || content.length < 1 ? <Col>По вашим параметрам ничего не найдено</Col> : sortBtns}
-        {content === null ? null : content}
+        {content === null ? null : contentToShow}
       </Row>
     </Container>
   );
