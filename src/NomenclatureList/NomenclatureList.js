@@ -8,23 +8,25 @@ const NomenclatureList = (props) => {
   const [sortNomenclatures, setSort] = useState('code')
 
   useEffect(() => {
-    toShowNomenclatures(sortNomenclatures)
+    toShowNomenclatures()
   }, [])
-  
+
   useEffect(() => {
-    toShowNomenclatures(sortNomenclatures)
-    console.log('asdfasdf');
+    toShowNomenclatures()
   }, [sortNomenclatures])
-  
-  const toShowNomenclatures = (sort) => {
-    console.log(sort);
+
+  const toShowNomenclatures = () => {
+    function sortFunc(sort) {
+      return function (a, b) {
+        return a[sort] - b[sort]
+      }
+    }
     let visibleNomenclatures = props.nomenclatures.filter(item =>
       item.length > props.data.length
       && item.height > props.data.height
       && item.width > props.data.width
       && item.material === props.data.material)
-      .sort((a, b) => a.sort - b.sort)
-      console.log(visibleNomenclatures);
+      .sort(sortFunc(sortNomenclatures))
     setNomenclatures(visibleNomenclatures)
   }
 
@@ -70,12 +72,12 @@ const NomenclatureList = (props) => {
       <Button className='sort-btn' onClick={() => sorting('length')} variant='light'>Длине</Button>
     </Col>
   </Row>
- 
- return (
+
+  return (
     <Container>
       {loading}
       <Row className='mt-5'>
-        {content === null ? <Col>По вашим параметрам ничего не найдено</Col> : sortBtns }
+        {content === null ? <Col>По вашим параметрам ничего не найдено</Col> : sortBtns}
         {content === null ? 'ыыы' : content}
       </Row>
     </Container>

@@ -24,7 +24,7 @@ class App extends Component {
     if (this.state.isLoaded) {
       this.setState({nomenclatures})
     } else {
-      console.log('aaaaaaaaaaaaaaaaa');
+      // console.log('aaaaaaaaaaaaaaaaa');
     }
     // let l = nomenclatures.filter(l => l.length === this.state.data.length)  
     // let l = nomenclatures.filter(l => console.log(l.length))
