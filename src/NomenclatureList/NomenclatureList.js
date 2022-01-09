@@ -6,7 +6,8 @@ import { Button, Col, Container, Row } from 'react-bootstrap';
 const NomenclatureList = (props) => {
   const [showNomenclatures, setNomenclatures] = useState(null)
   const [sortNomenclatures, setSort] = useState('code')
-
+  const [loadMore, setLoadMore] = useState(9)
+  
   useEffect(() => {
     toShowNomenclatures()
   }, [])
@@ -73,21 +74,20 @@ const NomenclatureList = (props) => {
       <Button className='sort-btn' onClick={() => sorting('length')} variant='light'>Длине</Button>
     </Col>
   </Row>
-  const contentToShow = content.filter((item, index) => {
-    while (index < 9) {
+  const contentToShow = content === null ? <Col>По вашим параметрам ничего не найдено</Col> : content.filter((item, index) => {
+    while (index < loadMore) {
       return item
     } 
-    return false
-
-    
+    return false    
   })
   console.log(contentToShow);
   return (
-    <Container>
+    <Container style={{paddingBottom: '24px'}}>
       {loading}
       <Row className='mt-5'>
         {content === null || content.length < 1 ? <Col>По вашим параметрам ничего не найдено</Col> : sortBtns}
         {content === null ? null : contentToShow}
+        {content === null || content.length < 9 ? null : <Col className='col-2 mx-auto'><Button onClick={() => setLoadMore(loadMore + 9)}>Показать еще</Button></Col> }
       </Row>
     </Container>
   );
