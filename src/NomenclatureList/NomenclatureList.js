@@ -15,6 +15,10 @@ const NomenclatureList = (props) => {
     toShowNomenclatures()
   }, [sortNomenclatures])
 
+  useEffect(() => {
+    toShowNomenclatures()
+  }, [props])
+
   const toShowNomenclatures = () => {
     
     let visibleNomenclatures = props.nomenclatures.filter(item =>
@@ -69,13 +73,13 @@ const NomenclatureList = (props) => {
       <Button className='sort-btn' onClick={() => sorting('length')} variant='light'>Длине</Button>
     </Col>
   </Row>
-
+  
   return (
     <Container>
       {loading}
       <Row className='mt-5'>
-        {content === null ? <Col>По вашим параметрам ничего не найдено</Col> : sortBtns}
-        {content === null ? 'ыыы' : content}
+        {content === null || content.length < 1 ? <Col>По вашим параметрам ничего не найдено</Col> : sortBtns}
+        {content === null ? null : content}
       </Row>
     </Container>
   );
