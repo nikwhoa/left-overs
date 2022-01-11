@@ -24,7 +24,7 @@ const NomenclatureList = (props) => {
     
     let visibleNomenclatures = props.nomenclatures.filter(item =>
       item.length > props.data.length
-      && item.height > props.data.height
+      && item.height === props.data.height
       && item.width > props.data.width
       && item.material === props.data.material)
       .sort((a, b) => a[sortNomenclatures] - b[sortNomenclatures])
@@ -56,7 +56,7 @@ const NomenclatureList = (props) => {
           <b>Ширина:</b> {item.width} мм <br />
         </li>
         <li>
-          <b>Высота:</b> {item.height} мм<br />
+          <b>Толщина:</b> {item.height} мм<br />
         </li>
         <li>
           <b>Длина:</b> {item.length} мм<br />

@@ -37,7 +37,7 @@ class App extends Component {
       <div className="App">
         <About />
         <Filter getNomenclatureList={this.getNomenclatureList} getData={this.getData} />
-        {this.state.isLoaded ? <NomenclatureList data={this.state.data} nomenclatures={this.state.nomenclatures} /> : 'filter!'}
+        {this.state.isLoaded ? <NomenclatureList data={this.state.data} nomenclatures={this.state.nomenclatures} /> : null}
         
       </div>
     );
