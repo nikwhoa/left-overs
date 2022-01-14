@@ -55,7 +55,7 @@ class Width extends Component {
                         {loading}
                         {content}
                     </DropdownButton>
-                    <FormControl type='number' value={this.state.title === 'Ширина' ? this.state.value : this.state.value == this.state.title ? '' : this.state.value} ref={this.dropdownRef} onChange={(e) => { this.props.updateWidth(e.currentTarget.value, 'width'); this.inputHandler(e.currentTarget.value) }} aria-label="Text input with dropdown button" />
+                    <FormControl type='number' value={this.state.title === 'Ширина' ? this.state.value : this.state.value === this.state.title ? '' : this.state.value} ref={this.dropdownRef} onChange={(e) => { this.props.updateWidth(e.currentTarget.value, 'width'); this.inputHandler(e.currentTarget.value) }} aria-label="Text input with dropdown button" />
                 </InputGroup>
             </Col>
         )

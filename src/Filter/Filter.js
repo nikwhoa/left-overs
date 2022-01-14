@@ -3,7 +3,6 @@ import Length from "./Length"
 import Width from "./Width"
 import Height from "./Height"
 import Material from "./Material"
-import Decor from "./Decor"
 
 import dataService from "../service/dataService"
 import { Component } from "react"

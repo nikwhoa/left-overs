@@ -10,14 +10,17 @@ const NomenclatureList = (props) => {
   
   useEffect(() => {
     toShowNomenclatures()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     toShowNomenclatures()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortNomenclatures])
 
   useEffect(() => {
     toShowNomenclatures()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props])
 
   const toShowNomenclatures = () => {

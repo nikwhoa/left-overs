@@ -56,7 +56,7 @@ class Length extends Component {
                         {loading}
                         {content}
                     </DropdownButton>
-                    <FormControl type='number' value={this.state.title === 'Длина' ?  this.state.value  : this.state.value == this.state.title ? '' : this.state.value} ref={this.dropdownRef} onChange={e => { this.props.updateLength(e.currentTarget.value, 'length'); this.inputHandler(e.currentTarget.value) }} aria-label="Text input with dropdown button" />
+                    <FormControl type='number' value={this.state.title === 'Длина' ?  this.state.value  : this.state.value === this.state.title ? '' : this.state.value} ref={this.dropdownRef} onChange={e => { this.props.updateLength(e.currentTarget.value, 'length'); this.inputHandler(e.currentTarget.value) }} aria-label="Text input with dropdown button" />
                 </InputGroup>
             </Col>
         )

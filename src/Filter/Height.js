@@ -55,7 +55,7 @@ class Height extends Component {
                         {loading}
                         {content}
                     </DropdownButton>
-                    <FormControl type='number' value={this.state.title === 'Толщина' ?  this.state.value  : this.state.value == this.state.title ? '' : this.state.value} ref={this.dropdownRef} onChange={(e) => {this.props.updateHeight(e.currentTarget.value, 'height'); this.inputHandler(e.currentTarget.value) }} aria-label="Text input with dropdown button" />
+                    <FormControl type='number' value={this.state.title === 'Толщина' ?  this.state.value  : this.state.value === this.state.title ? '' : this.state.value} ref={this.dropdownRef} onChange={(e) => {this.props.updateHeight(e.currentTarget.value, 'height'); this.inputHandler(e.currentTarget.value) }} aria-label="Text input with dropdown button" />
                 </InputGroup>
             </Col>
         )
