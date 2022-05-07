@@ -23,12 +23,7 @@ class App extends Component {
   getNomenclatureList = (nomenclatures) => {
     if (this.state.isLoaded) {
       this.setState({nomenclatures})
-    } else {
-      // console.log('aaaaaaaaaaaaaaaaa');
     }
-    // let l = nomenclatures.filter(l => l.length === this.state.data.length)  
-    // let l = nomenclatures.filter(l => console.log(l.length))
-    // console.log(nomenclatures);
   }
 
 
@@ -38,7 +33,7 @@ class App extends Component {
         <About />
         <Filter getNomenclatureList={this.getNomenclatureList} getData={this.getData} />
         {this.state.isLoaded ? <NomenclatureList data={this.state.data} nomenclatures={this.state.nomenclatures} /> : null}
-        
+
       </div>
     );
   }
